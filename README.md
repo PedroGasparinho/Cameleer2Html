@@ -23,7 +23,9 @@ Jean-Christophe Filliâtre - https://usr.lmf.cnrs.fr/~jcf/index.fr.html \
 
 Convert lexer to OCaml program - ocamllex cameleer2html.mll \
 Compile lexer result - ocamlopt- o cameleer2html cameleer2html.ml \
-Convert example.ml to Html - ./cameleer2html example.ml
+Convert example.ml to Html - ./cameleer2html example.ml false \
+The first argument is the .ml file to be parsed into HTML \
+The second argument is a boolean to print line numbers (Can be omitted and its default is true)
 
 ## Styling
 
