@@ -13,7 +13,12 @@
   let () =
     print "<!DOCTYPE html>";
     print "<html><head><title>%s</title><style>" file;
-    print ".module { color: #fcba03; } .type { color: green; } .keyword { color: red; } .comment { color: #2177bf; } .number { color: black; }";
+    print "span {tab-size: 3;} ";
+    print ".module { color: #f78d02; } ";
+    print ".type { color: green; } ";
+    print ".keyword { color: red; } ";
+    print ".comment { color: #2177bf; } ";
+    print ".number { color: black; }";
     print "</style></head><body><pre>"
 
   let count = ref 0
@@ -49,21 +54,6 @@
         "rec"; "then"; "to"; "try"; "virtual"; "when"; "while"; "with" ];
     fun s -> Hashtbl.mem ht s
 
-  (*let is_keyword =
-    let ht = Hashtbl.create 97 in
-    List.iter
-      (fun s -> Hashtbl.add ht s ())
-      [ "and"; "as"; "assert"; "asr"; "begin"; "class";
-      "closed"; "constraint"; "do"; "done"; "downto"; "else";
-      "end"; "exception"; "external"; "false"; "for"; "fun";
-      "function"; "functor"; "if"; "in"; "include"; "inherit";
-      "land"; "lazy"; "let"; "lor"; "lsl"; "lsr";
-      "lxor"; "match"; "method"; "mod"; "module"; "mutable";
-      "new"; "of"; "open"; "or"; "parser"; "private";
-      "rec"; "sig"; "struct"; "then"; "to"; "true";
-      "try"; "type"; "val"; "virtual"; "when"; "while";
-      "with" ];
-    fun s -> Hashtbl.mem ht s*)
 }
 
 
