@@ -19,4 +19,13 @@ Course - https://usr.lmf.cnrs.fr/~jcf/ens/compil/ \
 Jean-Christophe Filliâtre - https://usr.lmf.cnrs.fr/~jcf/index.fr.html \
 École Normale Supérieure - https://www.ens.psl.eu/
 
----
+## Usage
+
+Convert lexer to OCaml program - ocamllex cameleer2html.mll \
+Compile lexer result - ocamlopt- o cameleer2html cameleer2html.ml \
+Convert example.ml to Html - ./cameleer2html example.ml
+
+## Styling
+
+The selected color code is personal preference and does not fully cover
+every facet of the language, such as official module names.
