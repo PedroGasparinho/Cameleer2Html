@@ -27,3 +27,11 @@ setup.log
 
 # Local OPAM switch
 _opam/
+
+# Example files
+example.ml
+example.ml.html
+
+# Compiled lexer
+cameleer2html
+cameleer2html.ml
