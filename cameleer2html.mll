@@ -59,7 +59,7 @@ let ident = ['A'-'Z' 'a'-'z' '_'] ['A'-'Z' 'a'-'z' '0'-'9' '_']*
 
 rule scan = parse
   | "(*@" { print "<span class=\"contract\">(*@";
-             comment lexbuf;
+             contract lexbuf;
              print "</span>";
              scan lexbuf }
   | "(*"   { print "<span class=\"comment\">(*";
@@ -78,15 +78,24 @@ rule scan = parse
   | '"'    { print "\""; string lexbuf; scan lexbuf }
   | "'\"'"
   | _ as s { print "%s" s; scan lexbuf }
-and comment = parse
-  | "(*"   { print "(*"; comment lexbuf; comment lexbuf }
+and contract = parse
   | "*)"   { print "*)" }
   | eof    { () }
   | ident as s
   { if is_keyword s then begin
         print "<span class=\"logical\">%s</span>" s
       end 
-      else print "%s" s; comment lexbuf }
+      else print "%s" s; contract lexbuf }
+  | "\n"   { newline (); contract lexbuf }
+  | '"'    { print "\""; string lexbuf; contract lexbuf }
+  | "<"    { print "&lt;"; contract lexbuf }
+  | "&"    { print "&amp;"; contract lexbuf }
+  | "'\"'"
+  | _ as s { print "%s" s; contract lexbuf }
+and comment = parse
+  | "(*"   { print "(*"; comment lexbuf; comment lexbuf }
+  | "*)"   { print "*)" }
+  | eof    { () }
   | "\n"   { newline (); comment lexbuf }
   | '"'    { print "\""; string lexbuf; comment lexbuf }
   | "<"    { print "&lt;"; comment lexbuf }
