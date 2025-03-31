@@ -1,6 +1,10 @@
 {
+  let print_line_numbers = ref true
+  
   let () =
-    if Array.length Sys.argv <> 2
+    if Array.length Sys.argv = 3 then
+      print_line_numbers := bool_of_string Sys.argv.(2)
+    else if Array.length Sys.argv <> 2
     || not (Sys.file_exists Sys.argv.(1)) then begin
       Printf.eprintf "usage: caml2html file\n";
       exit 1
@@ -22,7 +26,11 @@
     print "</style></head><body><pre>"
 
   let count = ref 0
-  let newline () = incr count; print "\n<span class=\"number\">%3d</span>: " !count
+  let newline () = 
+    if !print_line_numbers then begin
+      incr count; print "\n<span class=\"number\">%3d</span>: " !count
+    end
+    else print "\n"
   let () = newline ()
 
   let is_module =
