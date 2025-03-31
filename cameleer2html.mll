@@ -1,14 +1,19 @@
 {
   let print_line_numbers = ref true
   
+  let print_error s =
+    Printf.eprintf "error: %s\n" s;
+    exit 1
+
   let () =
-    if Array.length Sys.argv = 3 then
+    if not (Sys.file_exists Sys.argv.(1)) then begin
+      print_error "file not found"
+    end;
+    let num_args = Array.length Sys.argv in
+    if num_args = 3 then
       print_line_numbers := bool_of_string Sys.argv.(2)
-    else if Array.length Sys.argv <> 2
-    || not (Sys.file_exists Sys.argv.(1)) then begin
-      Printf.eprintf "usage: caml2html file\n";
-      exit 1
-    end
+    else if num_args <> 2 then
+      print_error "wrong number of arguments"
 
   let file = Sys.argv.(1)
   let cout = open_out (file ^ ".html")
@@ -53,7 +58,6 @@
     fun s -> Hashtbl.mem ht s
 
 }
-
 
 let ident = ['A'-'Z' 'a'-'z' '_'] ['A'-'Z' 'a'-'z' '0'-'9' '_']*
 
