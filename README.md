@@ -21,11 +21,13 @@ Jean-Christophe Filliâtre - https://usr.lmf.cnrs.fr/~jcf/index.fr.html \
 
 ## Usage
 
-Convert lexer to OCaml program - ocamllex cameleer2html.mll \
-Compile lexer result - ocamlopt- o cameleer2html cameleer2html.ml \
-Convert example.ml to Html - ./cameleer2html example.ml false \
-The first argument is the .ml file to be parsed into HTML \
-The second argument is a boolean to print line numbers (Can be omitted and its default is true)
+This project includes a Shell Script and can be used as follows:
+
+```./run.sh example.ml true```
+
+Where the first argument is the .ml file to be parsed into HTML, and the second argument is a boolean value to determine whether to print line numbers (Can be omitted, and its default is true).
+
+Under the hood, the Shell Script uses a Makefile to compile the lexer.
 
 ## Styling
 
