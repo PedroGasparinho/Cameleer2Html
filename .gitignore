@@ -35,3 +35,6 @@ example.ml.html
 # Compiled lexer
 cameleer2html
 cameleer2html.ml
+
+# Other scripts
+all.sh

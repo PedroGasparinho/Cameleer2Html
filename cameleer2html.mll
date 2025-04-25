@@ -28,6 +28,7 @@
     print ".contract { color: #2177bf; } "; (* #2177bf *)
     print ".comment { color: #666666; } "; (* #666666 *)
     print ".number { color: black; }";
+    print ".info { border-top: 1px solid black; }";
     print "</style></head><body><pre>"
 
   let count = ref 0
@@ -114,9 +115,17 @@ and string = parse
   | _ as s { print "%s" s; string lexbuf }
 
 {
+  let url = "https://github.com/PedroGasparinho/Cameleer2Html"
+  let url_name = "Cameleer2Html"
+  let info_text = "This page was generated with "
+
   let () =
     scan (Lexing.from_channel (open_in file));
-    print "</pre>\n</body></html>\n";
+    print "</pre>\n";
+    print "<div class=\"info\">\n";
+    print "<p>%s<a href=\"%s\">%s</a><p>\n" info_text url url_name;
+    print "</div>\n";
+    print "</body></html>\n";
     close_out cout
 
 }
