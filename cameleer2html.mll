@@ -5,17 +5,19 @@
     Printf.eprintf "error: %s\n" s;
     exit 1
 
+  let file = Sys.argv.(1)
+
   let () =
-    if not (Sys.file_exists Sys.argv.(1)) then begin
-      print_error "file not found"
+    if not (Sys.file_exists file) then begin
+      print_error ("File not found: " ^ file)
     end;
     let num_args = Array.length Sys.argv in
     if num_args = 3 then
       print_line_numbers := bool_of_string Sys.argv.(2)
     else if num_args <> 2 then
-      print_error "wrong number of arguments"
+      print_error "Wrong number of arguments"
 
-  let file = Sys.argv.(1)
+  
   let cout = open_out (file ^ ".html")
   let print s = Printf.fprintf cout s
 
