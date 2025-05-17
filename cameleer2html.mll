@@ -25,9 +25,9 @@
     print "<!DOCTYPE html>";
     print "<html><head><title>%s</title><style>" file;
     print "span {tab-size: 2;} ";
-    print ".logical { color:rgb(226, 124, 106); } "; (* #d87b6b *)
+    print ".logical { color:rgb(244, 157, 55); } "; (* #d87b6b, rgb(226, 124, 106) *)
     print ".keyword { color: red; } ";
-    print ".contract { color: #2177bf; } "; (* #2177bf *)
+    print ".contract { color: #1069B3; } "; (* #2177bf *)
     print ".comment { color: #666666; } "; (* #666666 *)
     print ".number { color: black; }";
     print ".info { border-top: 1px solid black; }";
