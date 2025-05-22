@@ -23,7 +23,7 @@ Jean-Christophe Filliâtre - https://usr.lmf.cnrs.fr/~jcf/index.fr.html \
 
 This project includes a Shell Script and can be used as follows:
 
-```./run.sh example.ml true```
+```./run.sh example.ml Example true```
 
 Where the first argument is the .ml file to be parsed into HTML, and the second argument is a boolean value to determine whether to print line numbers (Can be omitted, and its default is true).
 

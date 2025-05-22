@@ -1,20 +1,22 @@
 {
-  let print_line_numbers = ref true
-  
   let print_error s =
     Printf.eprintf "error: %s\n" s;
     exit 1
 
   let file = Sys.argv.(1)
 
+  let title = Sys.argv.(2)
+
+  let print_line_numbers = ref true
+
   let () =
     if not (Sys.file_exists file) then begin
       print_error ("File not found: " ^ file)
     end;
     let num_args = Array.length Sys.argv in
-    if num_args = 3 then
-      print_line_numbers := bool_of_string Sys.argv.(2)
-    else if num_args <> 2 then
+    if num_args = 4 then begin
+      print_line_numbers := bool_of_string Sys.argv.(3)
+    end else if num_args <> 3 then
       print_error "Wrong number of arguments"
 
   
@@ -23,15 +25,27 @@
 
   let () =
     print "<!DOCTYPE html>";
-    print "<html><head><title>%s</title><style>" file;
+    print "<html><head><title>%s</title><style>" title;
     print "span {tab-size: 2;} ";
     print ".logical { color:rgb(244, 157, 55); } "; (* #d87b6b, rgb(226, 124, 106) *)
     print ".keyword { color: red; } ";
-    print ".contract { color: #1069B3; } "; (* #2177bf *)
+    print ".contract { color: #1069B3; } "; (* #1069B3 *) (* #2177bf *)
     print ".comment { color: #666666; } "; (* #666666 *)
     print ".number { color: black; }";
     print ".info { border-top: 1px solid black; }";
-    print "</style></head><body><pre>"
+    print ".title { border-bottom: 1px solid black; }";
+    print "</style></head><body><div class=\"title\">";
+    print "<h2>%s<h2></div><pre>" title
+
+(*
+    print "</pre>\n";
+    print "<div class=\"info\">\n";
+    print "<p>%s<a href=\"%s\">%s</a><p>\n" info_text url url_name;
+    print "</div>\n";
+    print "</body></html>\n";
+    close_out cout
+
+*)
 
   let count = ref 0
   let newline () = 
